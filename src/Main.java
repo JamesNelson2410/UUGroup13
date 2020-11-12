@@ -1,6 +1,12 @@
+package GroupProject.UUGroup13.src;
+
 import java.util.Scanner;
 
-public class main {
+/**
+ * Define a Main Class
+ */
+
+public class Main {
 
     private static boolean userInRepo(String enteredUsername, String enteredPassword, UserRepository repo) {
         User[] users = repo.getUsers();
@@ -11,11 +17,10 @@ public class main {
 
             if ((userUsername == enteredUsername) && (userPassword == enteredPassword)) {
                 return true;
-            }
-        }
+            }//if
+        }//for
         return false;
-    }
-
+    }//boolean
 
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
@@ -40,10 +45,10 @@ public class main {
                     userExists = userInRepo(enteredUsername, enteredPassword, userRepository);
                     if (userExists) {
                         System.out.println("Congrats " + enteredUsername);
-
-                    } else {
+                    } //if
+                    else {
                         System.out.println("No user found, try again.");
-                    }
+                    }//else
                     break;
                 case 2: //Create user
                     System.out.println("In create");
@@ -58,9 +63,9 @@ public class main {
                     break;
                 default:
                     keepLooping = false;
-            }
-        }
+            }//switch
+        }//while
         System.out.println("Goodbye");
-    }
-}
+    }//main
+}//class
 
