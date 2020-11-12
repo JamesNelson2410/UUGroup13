@@ -1,9 +1,3 @@
-/**
- * Created by Mark on 10/11/2020
- * Define a Profile Class (extends Main)
- */
-public class Profile extends Main {
+package GroupProject.UUGroup13.src;
 
-
-
-}//class
+//This Class is now called User
