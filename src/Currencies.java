@@ -1,13 +1,10 @@
-package GroupProject.UUGroup13.src;
-
 import java.text.DecimalFormat;
 
 /**
-
+ * Created by Mark on 10/11/2020
  * Define a Currencies Class (extends Expenses)
  */
-
-public class Currencies extends Expenses {
+public class Currencies extends Main {
    DecimalFormat df = new DecimalFormat("00.00");
 
    private String currency;
