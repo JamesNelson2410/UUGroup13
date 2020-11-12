@@ -34,4 +34,14 @@
     </task>
     <servers />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="3620" y="446" key="FileChooserDialogImpl" timestamp="1605212645224">
+      <screen x="2560" y="0" width="2560" height="1410" />
+    </state>
+    <state x="3620" y="446" key="FileChooserDialogImpl/0.0.2560.1410/2560.0.2560.1410@2560.0.2560.1410" timestamp="1605212645224" />
+    <state x="3431" y="325" key="new project wizard" timestamp="1605212687635">
+      <screen x="2560" y="0" width="2560" height="1410" />
+    </state>
+    <state x="3431" y="325" key="new project wizard/0.0.2560.1410/2560.0.2560.1410@2560.0.2560.1410" timestamp="1605212687635" />
+  </component>
 </project>

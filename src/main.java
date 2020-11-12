@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
     private static boolean userInRepo(String enteredUsername, String enteredPassword, UserRepository repo) {
         User[] users = repo.getUsers();
