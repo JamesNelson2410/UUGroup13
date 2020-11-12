@@ -1,5 +1,3 @@
-package GroupProject;
-
 import java.text.DecimalFormat;
 
 /**
