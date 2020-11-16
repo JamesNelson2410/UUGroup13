@@ -1,7 +1,8 @@
+package GroupProject.UUGroup13.src;
+
 import java.text.DecimalFormat;
 
 /**
- * Created by Mark on 09/11/2020
  * Define a Expenses Class (extends Main)
  */
 abstract public class Expenses extends Main {

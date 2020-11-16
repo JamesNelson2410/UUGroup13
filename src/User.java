@@ -1,3 +1,9 @@
+package GroupProject.UUGroup13.src;
+
+/**
+ * Define a User Class
+ */
+
 public class User {
     private static int nextId = 1;
     private int employeeId;
@@ -13,7 +19,7 @@ public class User {
         this.employeeName = employeeName;
         this.username = username;
         this.password = password;
-    }
+    }//Constructor
 
     public int getEmployeeId() {
         return employeeId;
@@ -31,6 +37,10 @@ public class User {
         return username;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
@@ -42,4 +52,8 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-}
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+}//class
