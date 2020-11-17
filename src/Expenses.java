@@ -122,4 +122,23 @@ public class Expenses {
    protected double getGross() {
       return gross;
    }//getGross
+
+   @Override
+   public String toString() {
+      return "Expenses{" +
+              "df=" + df +
+              ", detail='" + detail + '\'' +
+              ", paymentType='" + paymentType + '\'' +
+              ", expenseType='" + expenseType + '\'' +
+              ", currency='" + currency + '\'' +
+              ", date='" + date + '\'' +
+              ", project=" + project +
+              ", employeeId=" + employeeId +
+              ", expensesID=" + expensesID +
+              ", net=" + net +
+              ", gross=" + gross +
+              ", vat=" + vat +
+              ", billable=" + billable +
+              '}';
+   }
 }//class
