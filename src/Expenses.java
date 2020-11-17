@@ -5,46 +5,39 @@ import java.text.DecimalFormat;
 /**
  * Define a Expenses Class (extends Main)
  */
-abstract public class Expenses extends Main {
+public class Expenses {
    DecimalFormat df = new DecimalFormat("00.00");
 
-   //**Changed EmployeeID & Date to double from string**
-   //**Change NET & VAT from double to int**
-   //**Do we need EmployeeID?**
+   private static int nextUniqueExpensesID = 1;
    private String project, detail, paymentType, expenseType, currency;
-   private double employeeID, date, vat;
+   private double employeeId, expensesID, date, vat;
    private int net, gross;
    private boolean billable;
 
    public Expenses() {
-      super(employeeID);
+      expensesID = nextUniqueExpensesID;
+      nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Default Constructor
 
-   //**Need detail for this constructor**
-   //public Expenses(String, String, double, String, int, String, boolean) {
-      //super(employeeID);
-      //String = ;
-      //String = ;
-      //double = ;
-      //String = ;
-      //int = ;
-      //String = ;
-      //boolean = ;
-      //nextUniqueEmployeeID = nextUniqueEmployeeID + 1;
-   //}//Constructor
+   public Expenses(double getEmployeeId, String expensesProject, String expensesCurrency, boolean isBillable) {
+      expensesID = nextUniqueExpensesID;
+      employeeId = getEmployeeId;
+      project = expensesProject;
+      date = 0;
+      detail = "";
+      paymentType = "";
+      expenseType = "";
+      currency = expensesCurrency;
+      net = 0;
+      vat = 0;
+      gross = 0;
+      billable = isBillable;
+      nextUniqueExpensesID = nextUniqueExpensesID + 1;
+   }//Constructor
 
-   //**Another empty constructor?**
-   //public Expenses(String, String, double, String, int, String, boolean) {
-      //super(employeeID);
-      //String = "";
-      //String = "";
-      //double = 0;
-      //String = "";
-      //int = 0;
-      //String = "";
-      //boolean = "";
-      //nextUniqueEmployeeID = nextUniqueEmployeeID + 1;
-   //}//Constructor
+   protected void setProject(String expensesProject) {
+      project = expensesProject;
+   }//setDetail
 
    protected String getProject() {
       return project;
@@ -86,6 +79,10 @@ abstract public class Expenses extends Main {
       return expenseType;
    }//getExpenseType
 
+   protected void setCurrency(String expensesCurrency) {
+      currency = expensesCurrency;
+   }//setDetail
+
    protected String getCurrency() {
       return currency;
    }//getCurrency
@@ -113,12 +110,4 @@ abstract public class Expenses extends Main {
    protected int getGross() {
       return gross;
    }//getGross
-
-   protected void setBillable(boolean expensesBillable) {
-      billable = expensesBillable;
-   }//setBillable
-
-   protected boolean getBillable() {
-      return billable;
-   }//getBillable
 }//class
