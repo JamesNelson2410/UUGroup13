@@ -15,7 +15,7 @@ public class Main {
          String userUsername = user.getUsername();
          String userPassword = user.getPassword();
 
-         if ((userUsername == enteredUsername) && (userPassword == enteredPassword)) {
+         if ((userUsername.equals(enteredUsername)) && (userPassword.equals(enteredPassword))) {
             return true;
          }//if
       }//for
@@ -34,9 +34,11 @@ public class Main {
 
       while(keepLooping) {
          System.out.println("1. Login\n2. Create Account\n-1. Exit");
-         selection = Integer.valueOf(keyboard.nextLine());
+         selection = Integer.parseInt(keyboard.nextLine());
          switch (selection) {
-            case 1: //Login
+
+            //Login
+            case 1 -> {
                System.out.println("In login");
                System.out.println("Pls enter username");
                enteredUsername = keyboard.nextLine();
@@ -50,8 +52,10 @@ public class Main {
                else {
                   System.out.println("No user found, try again.");
                }//else
-               break;
-            case 2: //Create user
+            }//case1
+
+            //Create user
+            case 2 -> {
                System.out.println("In create");
                System.out.println("Pls enter username");
                enteredUsername = keyboard.nextLine();
@@ -61,9 +65,8 @@ public class Main {
                enteredName = keyboard.nextLine();
                User newUser = new User(enteredName, enteredUsername, enteredPassword);
                userRepository.addUser(newUser);
-               break;
-            default:
-               keepLooping = false;
+            }//case2
+            default -> keepLooping = false;
          }//switch
       }//while
       System.out.println("Goodbye");
