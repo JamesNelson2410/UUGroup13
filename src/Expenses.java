@@ -9,9 +9,9 @@ public class Expenses {
    DecimalFormat df = new DecimalFormat("00.00");
 
    private static int nextUniqueExpensesID = 1;
-   private String project, detail, paymentType, expenseType, currency;
-   private double employeeId, expensesID, date, vat;
-   private int net, gross;
+   private String detail, paymentType, expenseType, currency, date;
+   private int project, employeeId, expensesID;
+   private double net, gross, vat;
    private boolean billable;
 
    public Expenses() {
@@ -19,35 +19,45 @@ public class Expenses {
       nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Default Constructor
 
-   public Expenses(double getEmployeeId, String expensesProject, String expensesCurrency, boolean isBillable) {
+   public Expenses(int getEmployeeId,
+                   int expensesProject,
+                   String expenseDate,
+                   String expenseDetail,
+                   String pPaymenType,
+                   String pExpenseType,
+                   String expensesCurrency,
+                   double pNet,
+                   double pVat,
+                   double pGross,
+                   boolean isBillable) {
       expensesID = nextUniqueExpensesID;
       employeeId = getEmployeeId;
       project = expensesProject;
-      date = 0;
-      detail = "";
-      paymentType = "";
-      expenseType = "";
+      date = expenseDate;
+      detail = expenseDetail;
+      paymentType = pPaymenType;
+      expenseType = pExpenseType;
       currency = expensesCurrency;
-      net = 0;
-      vat = 0;
-      gross = 0;
+      net = pNet;
+      vat = pVat;
+      gross = pGross;
       billable = isBillable;
       nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Constructor
 
-   protected void setProject(String expensesProject) {
-      project = expensesProject;
-   }//setDetail
+//   protected void setProject(String expensesProject) {
+//      project = expensesProject;
+//   }//setDetail
 
-   protected String getProject() {
-      return project;
-   }//getProject
+//   protected String getProject() {
+//      return project;
+//   }//getProject
 
-   protected void setDate(double expensesDate) {
+   protected void setDate(String expensesDate) {
       date = expensesDate;
    }//setDetail
 
-   protected double getDate() {
+   protected String getDate() {
       return date;
    }//getDate
 
@@ -59,6 +69,7 @@ public class Expenses {
       return detail;
    }//getDetail
 
+   //NOTE CHECK TEST THIS METHOD - UNSURE ON ARRAY INDEX and STRING INTERACTION
    protected void setPaymentType(String expensesPaymentType) {
       paymentType = expensesPaymentType;
       String[] paymentType = {"Cash", "Card"};
@@ -69,6 +80,7 @@ public class Expenses {
       return paymentType;
    }//getExpenseType
 
+   //NOTE CHECK TEST THIS METHOD - UNSURE ON ARRAY INDEX and STRING INTERACTION
    protected void setExpenseType(String expensesExpenseType) {
       expenseType = expensesExpenseType;
       String[] expenseType = {"Entertainment", "Travel/Transport", "Office Supplies", "Other"};
@@ -91,7 +103,7 @@ public class Expenses {
       net = expensesNet;
    }//setNet
 
-   protected int getNet() {
+   protected double getNet() {
       return net;
    }//getNet
 
@@ -103,11 +115,11 @@ public class Expenses {
       return vat;
    }//getVat
 
-   protected void setGross(int expensesGross) {
+   protected void setGross(double expensesGross) {
       gross = expensesGross;
    }//setGross
 
-   protected int getGross() {
+   protected double getGross() {
       return gross;
    }//getGross
 }//class
