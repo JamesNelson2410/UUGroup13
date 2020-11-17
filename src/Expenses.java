@@ -1,13 +1,12 @@
+package GroupProject.UUGroup13.src;
+
 import java.text.DecimalFormat;
 
 /**
- * Created by Mark on 09/11/2020
  * Define a Expenses Class (extends Main)
  */
 abstract public class Expenses extends Main {
    DecimalFormat df = new DecimalFormat("00.00");
-
-   private static int nextUniqueEmployeeID = 1;
 
    //**Changed EmployeeID & Date to double from string**
    //**Change NET & VAT from double to int**
@@ -18,14 +17,12 @@ abstract public class Expenses extends Main {
    private boolean billable;
 
    public Expenses() {
-      super ();
-      nextUniqueEmployeeID = nextUniqueEmployeeID + 1;
+      super(employeeID);
    }//Default Constructor
 
    //**Need detail for this constructor**
    //public Expenses(String, String, double, String, int, String, boolean) {
-      //employeeID = nextUniqueEmployeeID;
-      //super ();
+      //super(employeeID);
       //String = ;
       //String = ;
       //double = ;
@@ -38,8 +35,7 @@ abstract public class Expenses extends Main {
 
    //**Another empty constructor?**
    //public Expenses(String, String, double, String, int, String, boolean) {
-      //employeeID = nextUniqueEmployeeID;
-      //super ();
+      //super(employeeID);
       //String = "";
       //String = "";
       //double = 0;
@@ -50,13 +46,13 @@ abstract public class Expenses extends Main {
       //nextUniqueEmployeeID = nextUniqueEmployeeID + 1;
    //}//Constructor
 
-   protected void setProject(String expensesProject) {
-      project = expensesProject;
-   }//setProject
-
    protected String getProject() {
       return project;
    }//getProject
+
+   protected void setDate(double expensesDate) {
+      date = expensesDate;
+   }//setDetail
 
    protected double getDate() {
       return date;
@@ -72,14 +68,18 @@ abstract public class Expenses extends Main {
 
    protected void setPaymentType(String expensesPaymentType) {
       paymentType = expensesPaymentType;
+      String[] paymentType = {"Cash", "Card"};
+      System.out.println(paymentType.length);
    }//setPaymentType
 
    protected String getPaymentType() {
       return paymentType;
-   }//getPaymentType
+   }//getExpenseType
 
    protected void setExpenseType(String expensesExpenseType) {
       expenseType = expensesExpenseType;
+      String[] expenseType = {"Entertainment", "Travel/Transport", "Office Supplies", "Other"};
+      System.out.println(expenseType.length);
    }//setExpenseType
 
    protected String getExpenseType() {
