@@ -6,69 +6,42 @@ import java.util.Scanner;
  * Define the Main Class
  */
 
+
 public class Main {
 
-   private static boolean userInRepo(String enteredUsername, String enteredPassword, UserRepository repo) {
-      User[] users = repo.getUsers();
-      for (int i = 0; i < repo.getNextArrayIndex(); i++) {
-         User user = users[i];
-         String userUsername = user.getUsername();
-         String userPassword = user.getPassword();
-
-         if ((userUsername.equals(enteredUsername)) && (userPassword.equals(enteredPassword))) {
-            return true;
-         }//if
-      }//for
-      return false;
-   }//main
 
    public static void main(String[] args) {
       Scanner keyboard = new Scanner(System.in);
+      int activeUser,activeProject,selection;
+      activeUser =  Login.userMenu();
 
-      UserRepository userRepository = new UserRepository();
+      //select project
 
-      String enteredUsername, enteredPassword, enteredName;
-      int selection;
-      boolean userExists;
-      boolean keepLooping = true;
+      //Main Navigation window
+      System.out.println("1. View Expenses\n2. Create Expenses\n3. Edit Profile\n-1. Quit");
+      selection = Integer.parseInt(keyboard.nextLine());
+      switch (selection) {
 
-      while(keepLooping) {
-         System.out.println("1. Login\n2. Create Account\n-1. Exit");
-         selection = Integer.parseInt(keyboard.nextLine());
-         switch (selection) {
+         //View Expenses
+         case 1 -> {
+            System.out.println("Let me find an expense"); //placeholder
+            System.out.println("Show me all expenses"); //placeholder
+         }//case1
 
-            //Login
-            case 1 -> {
-               System.out.println("In login");
-               System.out.println("Pls enter username");
-               enteredUsername = keyboard.nextLine();
-               System.out.println("Pls enter password");
-               enteredPassword = keyboard.nextLine();
-               userExists = userInRepo(enteredUsername, enteredPassword, userRepository);
-               if (userExists) {
-                  System.out.println("Congrats " + enteredUsername);
+         case 2 -> {
+            System.out.println("Use Marks Expenses class");//placeholder
+         }//case2
 
-               }//if
-               else {
-                  System.out.println("No user found, try again.");
-               }//else
-            }//case1
+         case 3 -> {
+            System.out.println("Use Conalls mutators");//placeholder
+         }//case3
 
-            //Create user
-            case 2 -> {
-               System.out.println("In create");
-               System.out.println("Pls enter username");
-               enteredUsername = keyboard.nextLine();
-               System.out.println("Pls enter password");
-               enteredPassword = keyboard.nextLine();
-               System.out.println("Pls enter name");
-               enteredName = keyboard.nextLine();
-               User newUser = new User(enteredName, enteredUsername, enteredPassword);
-               userRepository.addUser(newUser);
-            }//case2
-            default -> keepLooping = false;
-         }//switch
-      }//while
-      System.out.println("Goodbye");
+         case -1 -> {
+            System.out.println("Goodbye");
+            System.exit(0);
+         }//case-1
+      }//Selection
+
+      System.out.println("fell out of the loop");//testing placeholder
    }//main
 }//class
