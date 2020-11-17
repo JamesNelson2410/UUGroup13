@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
  * Define a Currencies Class (extends Expenses)
  */
-public class Currencies extends Main {
+public class Currencies {
    DecimalFormat df = new DecimalFormat("00.00");
 
    private static int nextUniqueCurrencyID = 1;
@@ -14,13 +14,11 @@ public class Currencies extends Main {
    private double date, rate;
 
    public Currencies() {
-      super ();
       currencyID = nextUniqueCurrencyID;
       nextUniqueCurrencyID = nextUniqueCurrencyID + 1;
    }//Default Constructor
 
    public Currencies(String currenciesCurrency, double currenciesDate, double currenciesRate) {
-      super ();
       currencyID = nextUniqueCurrencyID;
       currency = "";
       date = 0;
