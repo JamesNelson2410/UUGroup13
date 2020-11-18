@@ -1,4 +1,4 @@
-package GroupProject.UUGroup13.src;
+package UUGroup13.src;
 
 /**
  * Program to test the Currencies, Expenses, Profile, Project

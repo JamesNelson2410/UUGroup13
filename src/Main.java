@@ -1,4 +1,4 @@
-package GroupProject.UUGroup13.src;
+package UUGroup13.src;
 
 import java.util.Scanner;
 
