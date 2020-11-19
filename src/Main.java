@@ -1,5 +1,6 @@
 package GroupProject.UUGroup13.src;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,8 +16,19 @@ public class Main {
    }//enterValue
 
    public static double enterDouble(String text) {
-      System.out.println("Enter the " + text);
-      return kb.nextDouble();
+      boolean keepLooping = true;
+      double userDouble=0;
+      do {
+         try {
+            System.out.println("Enter the " + text);
+            userDouble = kb.nextDouble();
+         } catch (InputMismatchException e) {
+            System.out.print("Numbers must be entered to 2 decimal places\n");
+         }
+         kb.nextLine();
+      } while (keepLooping);
+      keepLooping = true;
+      return userDouble;
    }//enterValue
 
    public static boolean enterBoolean(String text) {
@@ -24,6 +36,11 @@ public class Main {
       return kb.nextBoolean();
    }//enterValue
 
+
+   public static void testExpenses(){
+
+
+   }
 
    public static void main(String[] args) {
 
@@ -54,19 +71,17 @@ public class Main {
             Expenses latestExpenseID = new Expenses( //need to place logic around grabbing expense ID from Expense
                     activeUser,
                     activeProject,
-                    date = enterString("Date"),
-                    detail = enterString("Detail"),
-                    paymentType = enterString("Payment Type"),//need to add selection from array
-                    expenseType = enterString("Expense Type"), //need to add selection from array
-                    currency = enterString("Expenses Currency"),//need to add selection from array
-                    net = enterDouble("net amount"),
-                    vat = enterDouble("vat amount"),
-                    gross = enterDouble("gross amount"),
-                    billable = enterBoolean("Is the expenses billable?") //not very user friendly, have to enter true or false, could use Y or N?
+                    date = enterString("Date:"),
+                    detail = enterString("Detail:"),
+                    paymentType = enterString("Payment Type:"),//need to add selection from array
+                    expenseType = enterString("Expense Type:"), //need to add selection from array
+                    currency = enterString("Expenses Currency:"),//need to add selection from array
+                    net = enterDouble("Net Amount:"),
+                    vat = enterDouble("VAT Amount:"),
+                    gross = enterDouble("Gross Amount:"),
+                    billable = enterBoolean("Is the expenses billable? (true or false)") //not very user friendly, have to enter true or false, could use Y or N?
                     );
             latestExpenseID.toString();
-            //latestExpenseID++;//needs to be added back in after logic is implemented for expenses ID count for object Type name
-
          }//case2
 
          //Update Profile

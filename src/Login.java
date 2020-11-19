@@ -33,6 +33,20 @@ public class Login {
         int userExists; //changed to int from boolean
         boolean keepLooping = true;
 
+
+        //test accounts - remove later
+        User newUserA = new User("James Nelson", "jnelson", "password");
+        userRepository.addUser(newUserA);
+
+        User newUserB = new User("Mark Nash", "mnash", "password");
+        userRepository.addUser(newUserB);
+
+        User newUserC = new User("Anne Murphy", "amurphy", "password");
+        userRepository.addUser(newUserC);
+
+        User newUserD = new User("Conall Mullan", "cmullan", "password");
+        userRepository.addUser(newUserD);
+
         while (keepLooping) {
             System.out.println("1. Login\n2. Create Account\n-1. Exit");
             selection = Integer.parseInt(keyboard.nextLine());
@@ -75,4 +89,5 @@ public class Login {
         }//while
         return activeEmployee;
     }
-}//class 
+
+}//class
