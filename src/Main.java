@@ -1,6 +1,3 @@
-package GroupProject.UUGroup13.src;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,89 +7,180 @@ import java.util.Scanner;
 public class Main {
    static Scanner kb = new Scanner(System.in);
 
-   //Method for adding text at user input
    public static String enterString(String text) {
       System.out.println("Enter the " + text);
       return kb.nextLine();
-   }//enterValue
+   }//return entered value as String
 
-   //Method for adding doubles at user input with input type error handling
+   public static int enterInt(String text) {
+      System.out.println("Enter the " + text);
+      return Integer.parseInt(kb.nextLine());
+   }//return entered value as int
+
    public static double enterDouble(String text) {
-      double userDouble=0;
-      do {
-         try {
-            System.out.println("Enter the " + text);
-            userDouble = kb.nextDouble();
-         } catch (InputMismatchException e) {
-            System.out.print("Numbers must be entered to 2 decimal places\n");
-            kb.nextLine();
-         }
+      System.out.println("Enter the " + text);
+      return Double.parseDouble(kb.nextLine());
+   }//return entered value as double
 
-      } while (userDouble == 0 );
-      return userDouble;
-   }//enterValue
-
-   //Method for boolean at user input
    public static boolean enterBoolean(String text) {
       System.out.println(text);
-      return kb.nextBoolean();
-   }//enterValue
+      String enteredValue = kb.nextLine();
+      Boolean result = ( enteredValue.equalsIgnoreCase("y"));
+      return result;//return true if y or Y else return false
+   }//return entered value as boolean
 
+   public static Projects mapProjectIdToProject(int projectId, Projects[] allProjects) {
+      for(int i=0; i<allProjects.length; i++){
+         if(allProjects[i].getProjectId() == projectId){
+            return allProjects[i];
+         }
+      }
+      System.out.println("Project with ID " + projectId + " not found, setting as null");
+      return null;
+   }//given a projectId, return project object associated with that id
 
    public static void main(String[] args) {
 
-      int activeUser,activeProject,selection;
-      activeProject = 0; //Placeholder
-      String detail, paymentType, expenseType, currency, date;
-      double net, gross, vat;
-      boolean billable;
+      User activeUser;
+      ExpenseRepository allExpenses = new ExpenseRepository();
 
-      //select project
+      Projects[] allProjects = { new Projects("Belfast", 300),
+                                 new Projects("Krakow", 1500),
+                                 new Projects("Berlin", 750),
+                                 new Projects("Dublin", 300)};
+      //hardcoded array of project objects, projectId set in on constructor method
 
-      activeUser =  Login.userMenu();
+      while(true) {
+         activeUser = Login.userMenu();
+         if (activeUser != null) {
+            //Main Navigation window
+            boolean stayInLoop = true;
+            while (stayInLoop == true) {
+               System.out.println(  "1. View Expenses\n" +
+                                    "2. Create Expenses\n" +
+                                    "3. Edit Profile\n" +
+                                    "-1. Logout");
+               int selection = Integer.parseInt(kb.nextLine());
+               switch (selection) {
+                  //View Expenses
+                  case 1 -> {
+                     System.out.println(  "1. View your expenses\n" +
+                                          "2. View expenses for project");
+                     int expenseSelection = Integer.parseInt(kb.nextLine());
+                     switch (expenseSelection) {
+                        //User Expenses
+                        case 1 -> {
+                           allExpenses.printExpensesByUser(activeUser.getEmployeeId());
+                           break;
+                        }//user expenses
 
-      //Main Navigation window
-      do {
-         System.out.println("1. View Expenses\n2. Create Expenses\n3. Edit Profile\n-1. Quit");
-         selection = Integer.parseInt(kb.nextLine());
-         switch (selection) {
-
-            //View Expenses
-            case 1 -> {
-               System.out.println("Let me find an expense"); //placeholder
-               System.out.println("Show me all expenses"); //placeholder
-            }//case1
-
-            //Create Expense
-            case 2 -> {
-               System.out.println("Please enter the following details for your expense:\n");
-               Expenses latestExpenseID = new Expenses( //need to place logic around grabbing expense ID from Expense
-                       activeUser,
-                       activeProject,
-                       date = enterString("Date:"),
-                       detail = enterString("Detail:"),
-                       paymentType = enterString("Payment Type:"),//need to add selection from array
-                       expenseType = enterString("Expense Type:"), //need to add selection from array
-                       currency = enterString("Expenses Currency:"),//need to add selection from array
-                       net = enterDouble("Net Amount:"),
-                       vat = enterDouble("VAT Amount:"),
-                       gross = enterDouble("Gross Amount:"),
-                       billable = enterBoolean("Is the expenses billable? (true or false)") //not very user friendly, have to enter true or false, could use Y or N?
-               );
-               latestExpenseID.toString();
-            }//case2
-
-            //Update Profile
-            case 3 -> {
-               System.out.println("Use Conalls mutators");//placeholder
-            }//case3
-            //Quit
-            case -1 -> {
-               System.out.println("Goodbye");
-               System.exit(0);
-            }//case-1
-         }//Selection
-      }while(selection != 0);
-      System.out.println("fell out of the loop");//testing placeholder - delete
+                        //Project Expenses
+                        case 2 -> {
+                           System.out.println("Enter project ID");
+                           int projectId = Integer.parseInt(kb.nextLine());
+                           Projects enteredProject = mapProjectIdToProject(projectId, allProjects);
+                           String projectName = enteredProject.getProjectName();
+                           double projectBudget = enteredProject.getProjectBudget();
+                           System.out.println("You have selected the " + projectName + " project");
+                           System.out.println(  "1. View all expenses for " + projectName +
+                                                "\n2. View all billable expenses for " + projectName +
+                                                "\n3. View all non-billable expenses for " + projectName +
+                                                "\n4. Run budget report for " + projectName +
+                                                "\n-1. Go back");
+                           int projectExpenseSelection = Integer.parseInt(kb.nextLine());
+                           switch(projectExpenseSelection){
+                              case 1 -> {
+                                 allExpenses.printAllExpensesByProject(projectId);
+                                 break;
+                              }
+                              case 2 -> {
+                                 allExpenses.printBillableExpensesByProject(projectId);
+                                 break;
+                              }
+                              case 3 -> {
+                                 allExpenses.printNonBillableExpensesByProject(projectId);
+                                 break;
+                              }
+                              case 4 -> {
+                                 allExpenses.printBudgetReportForProject(projectId, projectBudget);
+                                 break;
+                              }
+                              case -1 -> {
+                                 break;
+                              }
+                              default -> {
+                                 System.out.println("Input not recognised");
+                                 break;
+                              }
+                           }
+                        }//project expenses
+                     }
+                  }//view expenses
+                  //Create Expense
+                  case 2 -> {
+                     System.out.println("Please enter the following details for your expense:\n");
+                     Expenses latestExpenseID = new Expenses( //need to place logic around grabbing expense ID from Expense
+                             activeUser.getEmployeeId(),
+                             mapProjectIdToProject(enterInt("ProjectId"), allProjects),
+                             enterString("Date"),
+                             enterString("Detail"),
+                             enterString("Payment Type - Card/Cash"),//need to add selection from array
+                             enterString("Expense Type"), //need to add selection from array
+                             enterString("Expenses Currency"),//need to add selection from array
+                             enterDouble("net amount"),
+                             enterDouble("vat amount"),
+                             enterBoolean("Is the expenses billable? (Y/N)") //changed to more user friendly (Y/N)
+                     );
+                     System.out.println("Expense created:");
+                     System.out.println(latestExpenseID.toString());
+                     allExpenses.addExpense(latestExpenseID);
+                     break;
+                  }//create expense
+                  //Update Profile
+                  case 3 -> {
+                     System.out.println("1. Update username\n2. Update password\n3. Update name\n-1. Go back");
+                     int profileUpdateSelection = Integer.parseInt(kb.nextLine());
+                     switch (profileUpdateSelection) {
+                        // Update username
+                        case 1 -> {
+                           String newUsername = enterString("username");
+                           activeUser.setUsername(newUsername);
+                           break;
+                        }//username
+                        // Update password
+                        case 2 -> {
+                           String newPassword = enterString("password");
+                           activeUser.setPassword(newPassword);
+                           break;
+                        }//password
+                        // Update name
+                        case 3 -> {
+                           String newName = enterString("name");
+                           activeUser.setEmployeeName(newName);
+                           break;
+                        }//name
+                        case -1 -> {
+                           break;
+                        }
+                        default -> {
+                           System.out.println("Input not recognised");
+                           break;
+                        }
+                     }
+                  }//update
+                  //Quit
+                  case -1 -> {
+                     System.out.println("Goodbye");
+                     stayInLoop = false;
+                     break;
+                  }//case-1
+                  default -> {
+                     System.out.println("Input not recognised");
+                     break;
+                  }
+               }//Selection
+            }
+         }
+      }
    }//main
 }//class

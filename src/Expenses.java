@@ -1,5 +1,3 @@
-package GroupProject.UUGroup13.src;
-
 import java.text.DecimalFormat;
 
 /**
@@ -10,9 +8,10 @@ public class Expenses {
 
    private static int nextUniqueExpensesID = 1;
    private String detail, paymentType, expenseType, currency, date;
-   private int project, employeeId, expensesID;
+   private int employeeId, expensesID;
+   private Projects project;
    private double net, gross, vat;
-   private boolean billable;
+   private boolean isBillable;
 
    public Expenses() {
       expensesID = nextUniqueExpensesID;
@@ -20,7 +19,7 @@ public class Expenses {
    }//Default Constructor
 
    public Expenses(int getEmployeeId,
-                   int expensesProject,
+                   Projects expensesProject,
                    String expenseDate,
                    String expenseDetail,
                    String pPaymenType,
@@ -28,20 +27,19 @@ public class Expenses {
                    String expensesCurrency,
                    double pNet,
                    double pVat,
-                   double pGross,
                    boolean isBillable) {
       expensesID = nextUniqueExpensesID;
       employeeId = getEmployeeId;
       project = expensesProject;
       date = expenseDate;
       detail = expenseDetail;
-      paymentType = pPaymenType;
-      expenseType = pExpenseType;
+      paymentType = pPaymenType; //card/cash
+      expenseType = pExpenseType;//hotel
       currency = expensesCurrency;
       net = pNet;
       vat = pVat;
-      gross = pGross;
-      billable = isBillable;
+      gross = pNet + pVat;
+      this.isBillable = isBillable;
       nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Constructor
 
@@ -123,22 +121,33 @@ public class Expenses {
       return gross;
    }//getGross
 
+   protected int getEmployeeId() {
+      return employeeId;
+   }//getEmployeeId
+
+   protected Projects getProject() {
+      return project;
+   }//getProjectId
+
+   protected boolean isBillable(){
+      return isBillable;
+   }
+
    @Override
    public String toString() {
       return "Expenses{" +
-              "df=" + df +
-              ", detail='" + detail + '\'' +
+              "detail='" + detail + '\'' +
               ", paymentType='" + paymentType + '\'' +
               ", expenseType='" + expenseType + '\'' +
               ", currency='" + currency + '\'' +
               ", date='" + date + '\'' +
-              ", project=" + project +
+              ", project=" + project.getProjectName() +
               ", employeeId=" + employeeId +
               ", expensesID=" + expensesID +
               ", net=" + net +
               ", gross=" + gross +
               ", vat=" + vat +
-              ", billable=" + billable +
+              ", billable=" + isBillable +
               '}';
    }
 }//class

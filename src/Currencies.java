@@ -1,5 +1,3 @@
-package GroupProject.UUGroup13.src;
-
 import java.text.DecimalFormat;
 
 /**

@@ -1,5 +1,3 @@
-package GroupProject.UUGroup13.src;
-
 /**
  * Define a User Class
  */
@@ -11,7 +9,6 @@ public class User {
     private String username;
     private String password;
     private boolean isAdmin;
-    //Expense[] expenses;
 
     //Constructor to create a user object
     public User(String employeeName, String username, String password ){

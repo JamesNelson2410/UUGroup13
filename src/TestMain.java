@@ -1,5 +1,3 @@
-package GroupProject.UUGroup13.src;
-
 /**
  * Program to test the Currencies, Expenses, Profile, Project
  * & Main Classes

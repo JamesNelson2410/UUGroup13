@@ -1,13 +1,12 @@
-package GroupProject.UUGroup13.src;
-
 import java.util.Scanner;
 
 /**
  * Created by James Nelson on 17/11/2020
  */
 public class Login {
+    private static UserRepository userRepository = new UserRepository();
 
-    protected static int userInRepo(String enteredUsername, String enteredPassword, UserRepository repo) {//changed from boolean to int in method type
+    protected static User userInRepo(String enteredUsername, String enteredPassword, UserRepository repo) {//changed from boolean to int in method type
         User[] users = repo.getUsers();
         for (int i = 0; i < repo.getNextArrayIndex(); i++) {
             User user = users[i];
@@ -15,43 +14,26 @@ public class Login {
             String userPassword = user.getPassword();
 
             if ((userUsername.equals(enteredUsername)) && (userPassword.equals(enteredPassword))) {
-                return user.getEmployeeId();//changed from true to return variable for Mark
+                return user;//changed from true to return variable for Mark
 
             }//if
         }//for
-        return 0; //Conall changed this to 0 from false
+        return null;
     }//userInRepo
 
-
-    public static int userMenu() {
+    public static User userMenu() {
         Scanner keyboard = new Scanner(System.in);
-        UserRepository userRepository = new UserRepository();
 
         String enteredUsername, enteredPassword, enteredName;
-        int activeEmployee = 0;
+        User activeEmployee = null;
         int selection;
-        int userExists; //changed to int from boolean
+        User userExists; //changed to int from boolean
         boolean keepLooping = true;
-
-
-        //test accounts - remove later
-        User newUserA = new User("James Nelson", "jnelson", "password");
-        userRepository.addUser(newUserA);
-
-        User newUserB = new User("Mark Nash", "mnash", "password");
-        userRepository.addUser(newUserB);
-
-        User newUserC = new User("Anne Murphy", "amurphy", "password");
-        userRepository.addUser(newUserC);
-
-        User newUserD = new User("Conall Mullan", "cmullan", "password");
-        userRepository.addUser(newUserD);
 
         while (keepLooping) {
             System.out.println("1. Login\n2. Create Account\n-1. Exit");
             selection = Integer.parseInt(keyboard.nextLine());
             switch (selection) {
-
                 //Login
                 case 1 -> {
                     System.out.println("Login:");
@@ -60,7 +42,7 @@ public class Login {
                     System.out.println("Please enter password");
                     enteredPassword = keyboard.nextLine();
                     userExists = Login.userInRepo(enteredUsername, enteredPassword, userRepository);
-                    if (userExists != 0) { //added in handling for 0 returned from method in place of false
+                    if (userExists != null) { //added in handling for 0 returned from method in place of false
                         System.out.println("Congrats " + enteredUsername);
                         activeEmployee = userExists;
                         keepLooping = false;
@@ -83,11 +65,12 @@ public class Login {
                     userRepository.addUser(newUser);
                 }//case2
 
-                case -1 -> {System.exit(0);}
-                default -> keepLooping = false;
+                case -1 -> {
+                    System.out.println("Goodbye from login");
+                    System.exit(0);}
+                default -> System.out.println("Input not recognised");
             }//switch
         }//while
         return activeEmployee;
     }
-
-}//class
+}//class 
