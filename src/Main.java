@@ -1,9 +1,10 @@
+package GroupProject.UUGroup13.src;
+
 import java.util.Scanner;
 
 /**
  * Define the Main Class
  */
-
 public class Main {
    static Scanner kb = new Scanner(System.in);
 
@@ -29,25 +30,24 @@ public class Main {
       return result;//return true if y or Y else return false
    }//return entered value as boolean
 
-   public static Projects mapProjectIdToProject(int projectId, Projects[] allProjects) {
+   public static Project mapProjectIdToProject(int projectId, Project[] allProjects) {
       for(int i=0; i<allProjects.length; i++){
          if(allProjects[i].getProjectId() == projectId){
             return allProjects[i];
-         }
-      }
+         }//if
+      }//for
       System.out.println("Project with ID " + projectId + " not found, setting as null");
       return null;
    }//given a projectId, return project object associated with that id
 
    public static void main(String[] args) {
-
       User activeUser;
       ExpenseRepository allExpenses = new ExpenseRepository();
 
-      Projects[] allProjects = { new Projects("Belfast", 300),
-                                 new Projects("Krakow", 1500),
-                                 new Projects("Berlin", 750),
-                                 new Projects("Dublin", 300)};
+      Project[] allProjects = { new Project("Belfast", 300),
+                                 new Project("Krakow", 1500),
+                                 new Project("Berlin", 750),
+                                 new Project("Dublin", 300)};
       //hardcoded array of project objects, projectId set in on constructor method
 
       while(true) {
@@ -78,7 +78,7 @@ public class Main {
                         case 2 -> {
                            System.out.println("Enter project ID");
                            int projectId = Integer.parseInt(kb.nextLine());
-                           Projects enteredProject = mapProjectIdToProject(projectId, allProjects);
+                           Project enteredProject = mapProjectIdToProject(projectId, allProjects);
                            String projectName = enteredProject.getProjectName();
                            double projectBudget = enteredProject.getProjectBudget();
                            System.out.println("You have selected the " + projectName + " project");
@@ -92,34 +92,35 @@ public class Main {
                               case 1 -> {
                                  allExpenses.printAllExpensesByProject(projectId);
                                  break;
-                              }
+                              }//case1
                               case 2 -> {
                                  allExpenses.printBillableExpensesByProject(projectId);
                                  break;
-                              }
+                              }//case2
                               case 3 -> {
                                  allExpenses.printNonBillableExpensesByProject(projectId);
                                  break;
-                              }
+                              }//case3
                               case 4 -> {
                                  allExpenses.printBudgetReportForProject(projectId, projectBudget);
                                  break;
-                              }
+                              }//case4
                               case -1 -> {
                                  break;
-                              }
+                              }//case-1
                               default -> {
                                  System.out.println("Input not recognised");
                                  break;
-                              }
-                           }
+                              }//default
+                           }//switch (projectExpenseSelection)
                         }//project expenses
-                     }
+                     }//switch (expenseSelection)
                   }//view expenses
+
                   //Create Expense
                   case 2 -> {
                      System.out.println("Please enter the following details for your expense:\n");
-                     Expenses latestExpenseID = new Expenses( //need to place logic around grabbing expense ID from Expense
+                     Expense latestExpenseID = new Expense( //need to place logic around grabbing expense ID from Expense
                              activeUser.getEmployeeId(),
                              mapProjectIdToProject(enterInt("ProjectId"), allProjects),
                              enterString("Date"),
@@ -136,6 +137,7 @@ public class Main {
                      allExpenses.addExpense(latestExpenseID);
                      break;
                   }//create expense
+
                   //Update Profile
                   case 3 -> {
                      System.out.println("1. Update username\n2. Update password\n3. Update name\n-1. Go back");
@@ -147,12 +149,14 @@ public class Main {
                            activeUser.setUsername(newUsername);
                            break;
                         }//username
+
                         // Update password
                         case 2 -> {
                            String newPassword = enterString("password");
                            activeUser.setPassword(newPassword);
                            break;
                         }//password
+
                         // Update name
                         case 3 -> {
                            String newName = enterString("name");
@@ -165,9 +169,10 @@ public class Main {
                         default -> {
                            System.out.println("Input not recognised");
                            break;
-                        }
-                     }
+                        }//default
+                     }//switch (profileUpdateSelection)
                   }//update
+
                   //Quit
                   case -1 -> {
                      System.out.println("Goodbye");
@@ -177,10 +182,10 @@ public class Main {
                   default -> {
                      System.out.println("Input not recognised");
                      break;
-                  }
-               }//Selection
-            }
-         }
-      }
+                  }//default
+               }//selection
+            }//while
+         }//if
+      }//while
    }//main
 }//class

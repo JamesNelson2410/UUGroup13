@@ -1,39 +1,41 @@
+package GroupProject.UUGroup13.src;
+
 import java.text.DecimalFormat;
 
 /**
- * Define a Expenses Class (extends Main)
+ * Define a Expense Class
  */
-public class Expenses {
+public class Expense {
    DecimalFormat df = new DecimalFormat("00.00");
 
    private static int nextUniqueExpensesID = 1;
    private String detail, paymentType, expenseType, currency, date;
    private int employeeId, expensesID;
-   private Projects project;
+   private Project project;
    private double net, gross, vat;
    private boolean isBillable;
 
-   public Expenses() {
+   public Expense() {
       expensesID = nextUniqueExpensesID;
       nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Default Constructor
 
-   public Expenses(int getEmployeeId,
-                   Projects expensesProject,
-                   String expenseDate,
-                   String expenseDetail,
-                   String pPaymenType,
-                   String pExpenseType,
-                   String expensesCurrency,
-                   double pNet,
-                   double pVat,
-                   boolean isBillable) {
+   public Expense(int getEmployeeId,
+                  Project expensesProject,
+                  String expenseDate,
+                  String expenseDetail,
+                  String pPaymentType,
+                  String pExpenseType,
+                  String expensesCurrency,
+                  double pNet,
+                  double pVat,
+                  boolean isBillable) {
       expensesID = nextUniqueExpensesID;
       employeeId = getEmployeeId;
       project = expensesProject;
       date = expenseDate;
       detail = expenseDetail;
-      paymentType = pPaymenType; //card/cash
+      paymentType = pPaymentType; //card/cash
       expenseType = pExpenseType;//hotel
       currency = expensesCurrency;
       net = pNet;
@@ -42,14 +44,6 @@ public class Expenses {
       this.isBillable = isBillable;
       nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Constructor
-
-//   protected void setProject(String expensesProject) {
-//      project = expensesProject;
-//   }//setDetail
-
-//   protected String getProject() {
-//      return project;
-//   }//getProject
 
    protected void setDate(String expensesDate) {
       date = expensesDate;
@@ -67,7 +61,6 @@ public class Expenses {
       return detail;
    }//getDetail
 
-   //NOTE CHECK TEST THIS METHOD - UNSURE ON ARRAY INDEX and STRING INTERACTION
    protected void setPaymentType(String expensesPaymentType) {
       paymentType = expensesPaymentType;
       String[] paymentType = {"Cash", "Card"};
@@ -78,7 +71,6 @@ public class Expenses {
       return paymentType;
    }//getExpenseType
 
-   //NOTE CHECK TEST THIS METHOD - UNSURE ON ARRAY INDEX and STRING INTERACTION
    protected void setExpenseType(String expensesExpenseType) {
       expenseType = expensesExpenseType;
       String[] expenseType = {"Entertainment", "Travel/Transport", "Office Supplies", "Other"};
@@ -125,13 +117,13 @@ public class Expenses {
       return employeeId;
    }//getEmployeeId
 
-   protected Projects getProject() {
+   protected Project getProject() {
       return project;
    }//getProjectId
 
    protected boolean isBillable(){
       return isBillable;
-   }
+   }//isBillable
 
    @Override
    public String toString() {
@@ -149,5 +141,5 @@ public class Expenses {
               ", vat=" + vat +
               ", billable=" + isBillable +
               '}';
-   }
+   }//toString
 }//class

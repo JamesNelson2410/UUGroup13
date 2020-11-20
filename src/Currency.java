@@ -1,9 +1,11 @@
+package GroupProject.UUGroup13.src;
+
 import java.text.DecimalFormat;
 
 /**
- * Define a Currencies Class (extends Expenses)
+ * Define a Currency Class
  */
-public class Currencies {
+public class Currency {
    DecimalFormat df = new DecimalFormat("00.00");
 
    private static int nextUniqueCurrencyID = 1;
@@ -11,12 +13,12 @@ public class Currencies {
    private String currency;
    private double date, rate;
 
-   public Currencies() {
+   public Currency() {
       currencyID = nextUniqueCurrencyID;
       nextUniqueCurrencyID = nextUniqueCurrencyID + 1;
    }//Default Constructor
 
-   public Currencies(String currenciesCurrency, double currenciesDate, double currenciesRate) {
+   public Currency(String currenciesCurrency, double currenciesDate, double currenciesRate) {
       currencyID = nextUniqueCurrencyID;
       currency = "";
       date = 0;

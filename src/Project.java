@@ -1,18 +1,20 @@
+package GroupProject.UUGroup13.src;
+
 /**
- * Created by Anne Murphy on 17/11/2020
+ * Define the Project Class
  */
-public class Projects {
+public class Project {
     private static int nextProjectId = 0;
 
     private int projectId;
     private String projectName;
     private double projectBudget;
 
-    public Projects(String name, double budget){
+    public Project(String name, double budget){
         this.projectName = name;
         this.projectBudget = budget;
         this.projectId = nextProjectId++;
-    }
+    }//project
 
     public String getProjectName() {
         return this.projectName;
@@ -32,7 +34,6 @@ public class Projects {
 
     public int getProjectId() {
         return projectId;
-    }
-
+    }//getProjectId
 }//class
 

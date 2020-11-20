@@ -1,7 +1,9 @@
+package GroupProject.UUGroup13.src;
+
 import java.util.Scanner;
 
 /**
- * Created by James Nelson on 17/11/2020
+ * Define the User Class
  */
 public class Login {
     private static UserRepository userRepository = new UserRepository();
@@ -12,10 +14,8 @@ public class Login {
             User user = users[i];
             String userUsername = user.getUsername();
             String userPassword = user.getPassword();
-
             if ((userUsername.equals(enteredUsername)) && (userPassword.equals(enteredPassword))) {
                 return user;//changed from true to return variable for Mark
-
             }//if
         }//for
         return null;
@@ -72,5 +72,5 @@ public class Login {
             }//switch
         }//while
         return activeEmployee;
-    }
+    }//userMenu
 }//class 
