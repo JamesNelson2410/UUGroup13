@@ -83,7 +83,7 @@ public class Expense {
 
    protected void setCurrency(String expensesCurrency) {
       currency = expensesCurrency;
-   }//setDetail
+   }//setCurrency
 
    protected String getCurrency() {
       return currency;
