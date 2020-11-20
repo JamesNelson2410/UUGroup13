@@ -35,8 +35,8 @@ public class Expense {
       project = expensesProject;
       date = expenseDate;
       detail = expenseDetail;
-      paymentType = pPaymentType; //card/cash
-      expenseType = pExpenseType;//hotel
+      paymentType = pPaymentType;
+      expenseType = pExpenseType;
       currency = expensesCurrency;
       net = pNet;
       vat = pVat;
