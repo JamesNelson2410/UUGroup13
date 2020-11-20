@@ -14,7 +14,7 @@ public class Project {
         this.projectName = name;
         this.projectBudget = budget;
         this.projectId = nextProjectId++;
-    }//project
+    }//constructor
 
     public String getProjectName() {
         return this.projectName;
