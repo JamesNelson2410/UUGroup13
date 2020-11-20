@@ -3,7 +3,7 @@ package GroupProject.UUGroup13.src;
 import java.util.Scanner;
 
 /**
- * Define the User Class
+ * Define the Login Class
  */
 public class Login {
     private static UserRepository userRepository = new UserRepository();
