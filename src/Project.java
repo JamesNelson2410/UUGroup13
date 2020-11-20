@@ -24,6 +24,10 @@ public class Project {
         return this.projectBudget;
     } //getProjectBudget
 
+    public int getProjectId() {
+        return projectId;
+    }//getProjectId
+
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     } //setProjectName
@@ -31,9 +35,5 @@ public class Project {
     public void setProjectBudget(double projectBudget) {
         this.projectBudget = projectBudget;
     }//setProjectBudget
-
-    public int getProjectId() {
-        return projectId;
-    }//getProjectId
 }//class
 
