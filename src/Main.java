@@ -1,6 +1,8 @@
 package GroupProject.UUGroup13.src;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 /**
  * Define the Main Class
@@ -14,14 +16,34 @@ public class Main {
    }//return entered value as String
 
    public static int enterInt(String text) {
-      System.out.println("Enter the " + text);
-      return Integer.parseInt(kb.nextLine());
+      int userInt=0;
+      do {
+         try {
+            System.out.println("Enter the " + text);
+            userInt = kb.nextInt();
+         } catch (InputMismatchException e) {
+            System.out.print("Please enter a whole number\n");
+            kb.nextLine();
+         }
+
+      } while (userInt == 0 );
+      return userInt;
    }//return entered value as int
 
    public static double enterDouble(String text) {
-      System.out.println("Enter the " + text);
-      return Double.parseDouble(kb.nextLine());
-   }//return entered value as double
+      double userDouble=0;
+      do {
+         try {
+            System.out.println("Enter the " + text);
+            userDouble = kb.nextDouble();
+         } catch (InputMismatchException e) {
+            System.out.print("Numbers must be entered to 2 decimal places\n");
+            kb.nextLine();
+         }
+
+      } while (userDouble == 0 );
+         return userDouble;
+   }//enterValue
 
    public static boolean enterBoolean(String text) {
       System.out.println(text);
