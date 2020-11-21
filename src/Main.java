@@ -18,13 +18,12 @@ public class Main {
    public static int enterInt(String text) {
       int userInt=0;
       do {
-         try {
-            System.out.println("Enter the " + text);
-            userInt = kb.nextInt();
-            return userInt;
-         } catch (InputMismatchException e) {
-            System.out.print("Please enter a whole number\n");
-            kb.nextLine();
+          try {
+               System.out.println("Enter the " + text);
+               userInt = Integer.parseInt(kb.nextLine());
+               return userInt;
+          }catch (NumberFormatException e) { //Changed to NumberFormatException-1
+               System.out.print("Please enter a whole number\n");
          }
       } while (userInt == 0 );
       return 0;
@@ -33,21 +32,20 @@ public class Main {
    public static double enterDouble(String text) {
       double userDouble=0;
       do {
-         try {
-            System.out.println("Enter the " + text);
-            userDouble = kb.nextDouble();
-            return userDouble;
-         } catch (InputMismatchException e) {
-            System.out.print("Numbers must be entered to 2 decimal places\n");
-            kb.nextLine();
-         }
+          try {
+               System.out.println("Enter the " + text);
+               userDouble = Double.parseDouble(kb.nextLine());
+               return userDouble;
+          }
+          catch (NumberFormatException e) { // Changed to NumberFormatException
+               System.out.print("Numbers must be entered to 2 decimal places\n");
+          }
       } while (userDouble == 0 );
          return 0;
    }//enterValue
 
    public static boolean enterBoolean(String text) {
-      kb.nextLine();
-      System.out.println(text);
+      System.out.println(text); // Removed unnecessary kb.nextLine()
       String enteredValue = kb.nextLine();
       Boolean result = ( enteredValue.equalsIgnoreCase("y"));
       return result;//return true if y or Y else return false
@@ -55,8 +53,7 @@ public class Main {
 
    public static Project mapProjectIdToProject(int projectId, Project[] allProjects) {
       for(int i=0; i<allProjects.length; i++){
-         if(allProjects[i].getProjectId() == projectId){
-            kb.nextLine();
+         if(allProjects[i].getProjectId() == projectId){ // removed unnecessary kb.nextLine()
             return allProjects[i];
          }//if
       }//for
