@@ -47,7 +47,7 @@ public class Login {
                     enteredPassword = keyboard.nextLine();
                     userExists = Login.userInRepo(enteredUsername, enteredPassword, userRepository);
                     if (userExists != 0) { //added in handling for 0 returned from method in place of false
-                        System.out.println("Congrats " + enteredUsername + "... What would yu like to do?");
+                        System.out.println("Congrats " + enteredUsername + "... What would you like to do?");
                         activeEmployee = userExists;
                         keepLooping = false;
                     }//if
