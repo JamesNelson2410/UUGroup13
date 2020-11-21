@@ -40,14 +40,14 @@ public class Login {
 
                 //Login
                 case 1 -> {
-                    System.out.println("Login:");
+                    System.out.println("LOGIN:");
                     System.out.println("Please enter username");
                     enteredUsername = keyboard.nextLine();
                     System.out.println("Please enter password");
                     enteredPassword = keyboard.nextLine();
                     userExists = Login.userInRepo(enteredUsername, enteredPassword, userRepository);
                     if (userExists != 0) { //added in handling for 0 returned from method in place of false
-                        System.out.println("Congrats " + enteredUsername);
+                        System.out.println("Congrats " + enteredUsername + "... What would yu like to do?");
                         activeEmployee = userExists;
                         keepLooping = false;
                     }//if
@@ -58,7 +58,7 @@ public class Login {
 
                 //Create user
                 case 2 -> {
-                    System.out.println("Account Creation:");
+                    System.out.println("ACCOUNT CREATION:");
                     System.out.println("Please enter username");
                     enteredUsername = keyboard.nextLine();
                     System.out.println("Please enter password");
