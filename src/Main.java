@@ -21,13 +21,13 @@ public class Main {
          try {
             System.out.println("Enter the " + text);
             userInt = kb.nextInt();
+            return userInt;
          } catch (InputMismatchException e) {
             System.out.print("Please enter a whole number\n");
             kb.nextLine();
          }
-
       } while (userInt == 0 );
-      return userInt;
+      return 0;
    }//return entered value as int
 
    public static double enterDouble(String text) {
@@ -36,16 +36,17 @@ public class Main {
          try {
             System.out.println("Enter the " + text);
             userDouble = kb.nextDouble();
+            return userDouble;
          } catch (InputMismatchException e) {
             System.out.print("Numbers must be entered to 2 decimal places\n");
             kb.nextLine();
          }
-
       } while (userDouble == 0 );
-         return userDouble;
+         return 0;
    }//enterValue
 
    public static boolean enterBoolean(String text) {
+      kb.nextLine();
       System.out.println(text);
       String enteredValue = kb.nextLine();
       Boolean result = ( enteredValue.equalsIgnoreCase("y"));
@@ -55,6 +56,7 @@ public class Main {
    public static Project mapProjectIdToProject(int projectId, Project[] allProjects) {
       for(int i=0; i<allProjects.length; i++){
          if(allProjects[i].getProjectId() == projectId){
+            kb.nextLine();
             return allProjects[i];
          }//if
       }//for

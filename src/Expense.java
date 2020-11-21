@@ -128,17 +128,17 @@ public class Expense {
    @Override
    public String toString() {
       return "Expenses{" +
-              "detail='" + detail + '\'' +
+              "project=" + project.getProjectName() +
+              ", date='" + date + '\'' +
+              ", detail='" + detail + '\'' +
               ", paymentType='" + paymentType + '\'' +
               ", expenseType='" + expenseType + '\'' +
               ", currency='" + currency + '\'' +
-              ", date='" + date + '\'' +
-              ", project=" + project.getProjectName() +
               ", employeeId=" + employeeId +
               ", expensesID=" + expensesID +
-              ", net=" + net +
-              ", gross=" + gross +
-              ", vat=" + vat +
+              ", net=" + df.format(net) +
+              ", gross=" + df.format(gross) +
+              ", vat=" + df.format(vat) +
               ", billable=" + isBillable +
               '}';
    }//toString
