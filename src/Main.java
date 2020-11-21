@@ -146,14 +146,14 @@ public class Main {
                      System.out.println("Please enter the following details for your expense:\n");
                      Expense latestExpenseID = new Expense( //need to place logic around grabbing expense ID from Expense
                              activeUser.getEmployeeId(),
-                             mapProjectIdToProject(enterInt("ProjectId"), allProjects),
+                             mapProjectIdToProject(enterInt("ProjectId\n 0=Belfast, 1=Krakow, 2=Berlin, 3=Dublin"), allProjects),
                              enterString("Date"),
                              enterString("Detail"),
-                             enterString("Payment Type - Card/Cash"),//need to add selection from array
-                             enterString("Expense Type"), //need to add selection from array
-                             enterString("Expenses Currency"),//need to add selection from array
-                             enterDouble("net amount"),
-                             enterDouble("vat amount"),
+                             enterString("Payment Type\n \"Card\" \"Cash\""),//need to add selection from array
+                             enterString("Expense Type\n \"Entertainment\", \"Travel\", \"Office Supplies\" or \"Other\""), //need to add selection from array
+                             enterString("Expense Currency\n \"GBP\", \"EUR\", \"BGN\", \"PLN\", \"LEV\", or \"RON\""),//need to add selection from array
+                             enterDouble("Net amount"),
+                             enterDouble("VAT amount"),
                              enterBoolean("Is the expenses billable? (Y/N)") //changed to more user friendly (Y/N)
                      );
                      System.out.println("Expense created:");
