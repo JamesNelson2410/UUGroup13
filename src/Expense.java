@@ -61,21 +61,13 @@ public class Expense {
       return detail;
    }//getDetail
 
-   protected void setPaymentType(String expensesPaymentType) {
-      paymentType = expensesPaymentType;
-      String[] paymentType = {"Cash", "Card"};
-      System.out.println(paymentType.length);
-   }//setPaymentType
+   protected void setPaymentType(String expensesPaymentType) { paymentType = expensesPaymentType; }//setPaymentType
 
    protected String getPaymentType() {
       return paymentType;
    }//getExpenseType
 
-   protected void setExpenseType(String expensesExpenseType) {
-      expenseType = expensesExpenseType;
-      String[] expenseType = {"Entertainment", "Travel/Transport", "Office Supplies", "Other"};
-      System.out.println(expenseType.length);
-   }//setExpenseType
+   protected void setExpenseType(String expensesExpenseType) { expenseType = expensesExpenseType; }//setExpenseType
 
    protected String getExpenseType() {
       return expenseType;
