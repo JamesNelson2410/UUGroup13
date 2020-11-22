@@ -144,8 +144,8 @@ public class Main {
                      Expense latestExpenseID = new Expense( //need to place logic around grabbing expense ID from Expense
                              activeUser.getEmployeeId(),
                              mapProjectIdToProject(enterInt("ProjectId\n 0=Belfast, 1=Krakow, 2=Berlin, 3=Dublin"), allProjects),
-                             enterString("Date"),
-                             enterString("Detail"),
+                             enterString("Date of transaction (dd/mm/yy)"),
+                             enterString("Detail of spend"),
                              enterString("Payment Type\n \"Card\" \"Cash\""),//need to add selection from array
                              enterString("Expense Type\n \"Entertainment\", \"Travel\", \"Office Supplies\" or \"Other\""), //need to add selection from array
                              enterDouble("Net amount"),
