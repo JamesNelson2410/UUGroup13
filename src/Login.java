@@ -21,7 +21,7 @@ public class Login {
         return null;
     }//userInRepo
 
-    public static User userMenu() {
+    protected static User userMenu() {
         Scanner keyboard = new Scanner(System.in);
 
         String enteredUsername, enteredPassword, enteredName;

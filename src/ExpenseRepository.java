@@ -10,24 +10,24 @@ public class ExpenseRepository {
     private int nextArrayIndex = 0;
     private Expense[] expense;
 
-    public ExpenseRepository(){
+    protected ExpenseRepository(){
         this.expense = new Expense[1000];
     }//int amount
 
-    public Expense[] getUsers() {
+    protected Expense[] getUsers() {
         return this.expense;
     }//getUsers
 
-    public void addExpense( Expense newExpense ){
+    protected void addExpense( Expense newExpense ){
         this.expense[this.nextArrayIndex] = newExpense;
         this.nextArrayIndex++;
     }//addUser
 
-    public int getNextArrayIndex() {
+    protected int getNextArrayIndex() {
         return nextArrayIndex;
     }//getNextArrayIndex
 
-    public void printAllExpenses(){
+    protected void printAllExpenses(){
         boolean foundExpenses = false;
         for(int i = 0; i<nextArrayIndex; i++) {
             foundExpenses = true;
@@ -41,7 +41,7 @@ public class ExpenseRepository {
         }//if
     }//printAllExpenses
 
-    public void printExpensesByUser(int userId){
+    protected void printExpensesByUser(int userId){
         boolean foundExpenses = false;
         for(int i = 0; i<nextArrayIndex; i++) {
             Expense expense = this.expense[i];
@@ -56,7 +56,7 @@ public class ExpenseRepository {
         }//if
     }//printExpensesByUser
 
-    public void printAllExpensesByProject(int projectId){
+    protected void printAllExpensesByProject(int projectId){
         boolean foundExpenses = false;
         for(int i = 0; i<nextArrayIndex; i++) {
             Expense expense = this.expense[i];
@@ -71,7 +71,7 @@ public class ExpenseRepository {
         }//if
     }//printAllExpensesByProject
 
-    public void printBillableExpensesByProject(int projectId){
+    protected void printBillableExpensesByProject(int projectId){
         boolean foundExpenses = false;
         for(int i = 0; i<nextArrayIndex; i++) {
             Expense expense = this.expense[i];
@@ -86,7 +86,7 @@ public class ExpenseRepository {
         }//if
     }//printBillableExpensesByProject
 
-    public void printNonBillableExpensesByProject(int projectId){
+    protected void printNonBillableExpensesByProject(int projectId){
         boolean foundExpenses = false;
         for(int i = 0; i<nextArrayIndex; i++) {
             Expense expense = this.expense[i];
@@ -101,7 +101,7 @@ public class ExpenseRepository {
         }//if
     }//printNonBillableExpensesByProject
 
-    public void printBudgetReportForProject(int projectId, double projectBudget){
+    protected void printBudgetReportForProject(int projectId, double projectBudget){
         boolean foundExpenses = false;
         double totalGross = 0.0;
         for(int i = 0; i<nextArrayIndex; i++) {

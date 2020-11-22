@@ -10,29 +10,29 @@ public class Project {
     private String projectName;
     private double projectBudget;
 
-    public Project(String name, double budget){
+    protected Project(String name, double budget){
         this.projectName = name;
         this.projectBudget = budget;
         this.projectId = nextProjectId++;
     }//constructor
 
-    public String getProjectName() {
+    protected String getProjectName() {
         return this.projectName;
     } //getProjectName
 
-    public double getProjectBudget () {
+    protected double getProjectBudget () {
         return this.projectBudget;
     } //getProjectBudget
 
-    public int getProjectId() {
+    protected int getProjectId() {
         return projectId;
     }//getProjectId
 
-    public void setProjectName(String projectName) {
+    protected void setProjectName(String projectName) {
         this.projectName = projectName;
     } //setProjectName
 
-    public void setProjectBudget(double projectBudget) {
+    protected void setProjectBudget(double projectBudget) {
         this.projectBudget = projectBudget;
     }//setProjectBudget
 }//class

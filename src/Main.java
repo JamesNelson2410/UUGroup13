@@ -97,7 +97,7 @@ public class Main {
 
                         //Project Expenses
                         case 2 -> {
-                           System.out.println("Enter project ID");
+                           System.out.println("Enter project ID\n 0=Belfast, 1=Krakow, 2=Berlin, 3=Dublin");
                            int projectId = Integer.parseInt(kb.nextLine());
                            Project enteredProject = mapProjectIdToProject(projectId, allProjects);
                            String projectName = enteredProject.getProjectName();
@@ -148,7 +148,6 @@ public class Main {
                              enterString("Detail"),
                              enterString("Payment Type\n \"Card\" \"Cash\""),//need to add selection from array
                              enterString("Expense Type\n \"Entertainment\", \"Travel\", \"Office Supplies\" or \"Other\""), //need to add selection from array
-                             enterString("Expense Currency\n \"GBP\", \"EUR\", \"BGN\", \"PLN\", \"LEV\", or \"RON\""),//need to add selection from array
                              enterDouble("Net amount"),
                              enterDouble("VAT amount"),
                              enterBoolean("Is the expenses billable? (Y/N)") //changed to more user friendly (Y/N)

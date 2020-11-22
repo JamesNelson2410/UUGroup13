@@ -9,7 +9,7 @@ public class Expense {
    DecimalFormat df = new DecimalFormat("00.00");
 
    private static int nextUniqueExpensesID = 1;
-   private String detail, paymentType, expenseType, currency, date;
+   private String detail, paymentType, expenseType,  date;
    private int employeeId, expensesID;
    private Project project;
    private double net, gross, vat;
@@ -26,7 +26,6 @@ public class Expense {
                   String expenseDetail,
                   String pPaymentType,
                   String pExpenseType,
-                  String expensesCurrency,
                   double pNet,
                   double pVat,
                   boolean isBillable) {
@@ -37,13 +36,20 @@ public class Expense {
       detail = expenseDetail;
       paymentType = pPaymentType;
       expenseType = pExpenseType;
-      currency = expensesCurrency;
       net = pNet;
       vat = pVat;
       gross = pNet + pVat;
       this.isBillable = isBillable;
       nextUniqueExpensesID = nextUniqueExpensesID + 1;
    }//Constructor
+
+   public void setProject(Project project) {
+      this.project = project;
+   }
+
+   public void setBillable(boolean billable) {
+      isBillable = billable;
+   }
 
    protected void setDate(String expensesDate) {
       date = expensesDate;
@@ -72,14 +78,6 @@ public class Expense {
    protected String getExpenseType() {
       return expenseType;
    }//getExpenseType
-
-   protected void setCurrency(String expensesCurrency) {
-      currency = expensesCurrency;
-   }//setCurrency
-
-   protected String getCurrency() {
-      return currency;
-   }//getCurrency
 
    protected void setNet(int expensesNet) {
       net = expensesNet;
@@ -125,7 +123,6 @@ public class Expense {
               ", detail='" + detail + '\'' +
               ", paymentType='" + paymentType + '\'' +
               ", expenseType='" + expenseType + '\'' +
-              ", currency='" + currency + '\'' +
               ", employeeId=" + employeeId +
               ", expensesID=" + expensesID +
               ", net=" + df.format(net) +

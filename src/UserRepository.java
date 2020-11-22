@@ -7,20 +7,20 @@ public class UserRepository {
     private int nextArrayIndex = 0;
     private User[] users;
 
-    public UserRepository(){
+    protected UserRepository(){
         this.users = new User[1000];
     }//int amount
 
-    public User[] getUsers() {
+    protected User[] getUsers() {
         return this.users;
     }//getUsers
 
-    public void addUser( User newUser ){
+    protected void addUser( User newUser ){
         this.users[this.nextArrayIndex] = newUser;
         this.nextArrayIndex++;
     }//addUser
 
-    public int getNextArrayIndex() {
+    protected int getNextArrayIndex() {
         return nextArrayIndex;
     }
 }//class
