@@ -59,7 +59,7 @@ public class Login {
                     enteredUsername = keyboard.nextLine();
                     System.out.println("Please enter password");
                     enteredPassword = keyboard.nextLine();
-                    System.out.println("Please enter name");
+                    System.out.println("Please enter full name\n <forename> <surname>");
                     enteredName = keyboard.nextLine();
                     User newUser = new User(enteredName, enteredUsername, enteredPassword);
                     userRepository.addUser(newUser);
