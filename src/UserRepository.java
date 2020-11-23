@@ -1,6 +1,7 @@
 package GroupProject.UUGroup13.src;
 
 /**
+ * Created by James
  * Define a User Repository Class
  */
 public class UserRepository {

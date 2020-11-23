@@ -1,6 +1,7 @@
 package GroupProject.UUGroup13.src;
 
 /**
+ * Created by Conall
  * Define a User Class
  */
 public class User {

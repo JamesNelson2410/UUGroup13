@@ -1,6 +1,7 @@
 package GroupProject.UUGroup13.src;
 
 /**
+ * Created by Anne
  * Define the Project Class
  */
 public class Project {

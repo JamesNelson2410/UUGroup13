@@ -3,6 +3,7 @@ package GroupProject.UUGroup13.src;
 import java.text.DecimalFormat;
 
 /**
+ * Created by Mark
  * Define a Expense Class
  */
 public class Expense {
